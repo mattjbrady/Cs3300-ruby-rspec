@@ -53,7 +53,23 @@ def starts_with_consonant? s
 end
 
 def binary_multiple_of_4? s
-  # YOUR CODE HERE
+  s_test = s.chars
+  # Check if string is empty
+  if s_test.length() == 0
+    return false
+  end
+  # Check for string containing non-binary values
+  s_test.each do |value| 
+    if value != '0' && value != '1'
+      return false
+    end
+  end
+  decimal_value = s.to_i(base=2)
+  if decimal_value % 4 == 0
+    return true
+  else
+    return false
+  end
 end
 
 # Part 3
