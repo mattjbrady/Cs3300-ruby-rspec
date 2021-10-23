@@ -75,5 +75,22 @@ end
 # Part 3
 
 class BookInStock
-# YOUR CODE HERE
+  # Getters/setters
+  attr_accessor :isbn, :price
+
+  #Class constructor
+  def initialize(isbn, price)
+    # Catch exceptions in class instantiation
+    begin
+      raise ArgumentError.new("ISBN string empty") if isbn.empty?
+      raise ArgumentError.new("Price is not a number") if price <= 0
+    end
+    @isbn = isbn
+    @price = price
+  end
+
+  def price_as_string()
+    return "$%.2f" % [@price]
+  end
+
 end
