@@ -20,7 +20,26 @@ def max_2_sum arr
 end
 
 def sum_to_n? arr, n
-  # YOUR CODE HERE
+  # If array is 0 or 1 in length, return false
+  if arr.length() <= 1
+    return false
+  else
+    match_found = false # set a flag for finding a matching pair
+
+    # Iterate through array arr to all but final element
+    for i in 0..(arr.length()-2)
+      # Iterate from elements after i to end of array
+      for j in (i+1)..(arr.length()-1)
+        # Test if sum of i and j = n
+        if (arr[i] + arr[j]) == n
+            match_found = true
+        end
+      end
+    end
+    
+    # Return result of search
+    return match_found
+  end
 end
 
 # Part 2
