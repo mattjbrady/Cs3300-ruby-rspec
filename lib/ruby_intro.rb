@@ -7,7 +7,16 @@ def sum arr
 end
 
 def max_2_sum arr
-  # YOUR CODE HERE
+  if arr.length() <= 0
+    return 0
+  elsif arr.length() == 1
+    return arr[0]
+  else arr.length() >= 1
+    largest_val = arr.max
+    arr.delete_at(arr.index(arr.max))
+    second_largest_val = arr.max
+    return largest_val+second_largest_val 
+  end
 end
 
 def sum_to_n? arr, n
