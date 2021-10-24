@@ -49,7 +49,28 @@ def hello name
 end
 
 def starts_with_consonant? s
-  # YOUR CODE HERE
+  # If empty string
+  if s.empty?
+    return false
+  # String contains values
+  else
+    # Extract first character as lowercase
+    char = s[0].downcase()
+    # If is alpha value
+    if (char =~ /[a-z]/) != nil
+      # If is NOT a vowel
+      if (char =~ /[^aeiou]/) != nil
+        # Char was a letter that is not a vowel
+        return true
+      else
+        # Char was a letter that is a vowel
+        return false
+      end
+    else
+      # Char was not an alpha letter
+      return false
+    end
+  end
 end
 
 def binary_multiple_of_4? s
