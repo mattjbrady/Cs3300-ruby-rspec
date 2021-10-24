@@ -3,18 +3,27 @@
 # Part 1
 
 def sum arr
+  # Return the sum of array elements
   return arr.sum
 end
 
 def max_2_sum arr
+  # If array contains no values, return 0
   if arr.length() <= 0
     return 0
+  # If array only has length of 1, return only value in array
   elsif arr.length() == 1
     return arr[0]
+  # Other cases
   else arr.length() >= 1
+    # Get largest value
     largest_val = arr.max
+    # Remove that value from array
     arr.delete_at(arr.index(arr.max))
+    # Get next largest valye
     second_largest_val = arr.max
+
+    # Return sum of two values
     return largest_val+second_largest_val 
   end
 end
@@ -45,6 +54,7 @@ end
 # Part 2
 
 def hello name
+  # Return message with name added
   return "Hello, " + name
 end
 
@@ -52,6 +62,7 @@ def starts_with_consonant? s
   # If empty string
   if s.empty?
     return false
+
   # String contains values
   else
     # Extract first character as lowercase
@@ -74,18 +85,23 @@ def starts_with_consonant? s
 end
 
 def binary_multiple_of_4? s
-  s_test = s.chars
   # Check if string is empty
-  if s_test.length() == 0
+  if s.empty?
     return false
   end
+
   # Check for string containing non-binary values
+  s_test = s.chars
   s_test.each do |value| 
     if value != '0' && value != '1'
       return false
     end
   end
+
+  # Convert string to decimal value
   decimal_value = s.to_i(base=2)
+
+  # Test if value is divisible by 4 evenly
   if decimal_value % 4 == 0
     return true
   else
@@ -104,7 +120,9 @@ class BookInStock
     # Catch exceptions in class instantiation
     begin
       raise ArgumentError.new("ISBN string empty") if isbn.empty?
-      raise ArgumentError.new("Price is not a number") if price <= 0
+      # This except also casts ISBN as needing to be a string, so that's covered
+      raise ArgumentError.new("Price is zero/negative") if price <= 0
+      # This except also casts price as needing to be a number
     end
     @isbn = isbn
     @price = price
